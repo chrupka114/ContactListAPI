@@ -1,0 +1,140 @@
+﻿
+
+@model Contact
+<form method="post">
+
+	<div class="border p-3 mt-4">
+		<div class="row pb -2">
+			<h2 class="text-primary" >Create Contact</h2>
+			<hr/>
+		</div>
+		<div asp-validation-summary="All"></div>
+		<div class="mb-3">
+			<label asp-for="Name">Name</label>
+			<input asp-for="Name" class="form-control" />
+			<span asp-validation-for="Name" class="text-danger"></span>
+		</div>
+		<div class="mb-3">
+			<label asp-for="Surname">Surname</label>
+			<input asp-for="Surname" class="form-control" />
+			<span asp-validation-for="Surname" class="text-danger"></span>
+		</div>
+			<div class="mb-3">
+			<label asp-for="Email">Email</label>
+			<input asp-for="Email" class="form-control" />
+			<span asp-validation-for="Email" class="text-danger"></span>
+		</div>
+
+			<div class="mb-3">
+			<label asp-for="Password">Password</label>
+			<input asp-for="Password" class="form-control" />
+			<span asp-validation-for="Password" class="text-danger"></span>
+		</div>
+
+			<div class="mb-3">
+			<label asp-for="ContactCategory">Category</label>
+			<!--first select menu -->
+	  <select name="name" id="mySelect" onchange="myFunction()">
+		<option value="Buisness">Buisness</option>
+		<option value="Private">Private</option>
+		<option value="others">Others</option>
+	  </select>
+	  <!--textbox when other selected -->
+	  <input
+        style="display: none"
+
+        id="others-text"
+		value="Worker"
+		asp-for="ContactCategory"
+
+      />
+	  <!--second select menu with specified role -->
+		<select name="name" id="tego" style="display: inline" onchange="myFunction2()">
+		<option value="Worker">Worker</option>
+		<option value="Boss">Boss</option>
+		<option value="Client">Client</option>
+	  </select>
+
+
+		</div>
+
+			<div class="mb-3">
+			<label asp-for="PhoneNumber">Phone Number</label>
+			<input asp-for="PhoneNumber" class="form-control" />
+			<span asp-validation-for="PhoneNumber" class="text-danger"></span>
+		</div>
+
+			<div class="mb-3">
+			<label asp-for="BirthDay">Birth day</label>
+			<input asp-for="BirthDay" class="form-control" />
+			<span asp-validation-for="BirthDay" class="text-danger"></span>
+		</div>
+		<button type="submit" class="btn btn_primary" style="width":150px>Create</button>
+		<a asp-controller="Home" asp-action="Index" class="btn-secondary" style="width:150px">
+			back to list
+		</a>
+	</div>
+</form>
+
+
+
+
+<!-- not reloading the site after bad input -->
+@section Scripts{
+	@{
+		<partial name="_ValidationScriptsPartial" />
+	}
+
+}
+@functions {
+
+
+}
+
+<script>
+	//funcion for first select menu
+	function myFunction() {
+      var x = document.getElementById("mySelect").value;
+	  var y = document.getElementById("tego").value;
+      var input = document.getElementById("others-text");
+	  var input2 = document.getElementById("tego");
+
+
+      if (x === "others") {
+        input.style.display = "block";
+
+		input2.style.display = "none";
+		input.value = "";
+      } else {
+        input.style.display = "none";
+
+      }
+	  if(x==="Private"){
+		  input.value = "Private";
+
+		input2.style.display = "none";
+	  }
+	        if (x === "Buisness") {
+
+		input2.style.display = "inline";
+
+
+      } 
+
+    }
+</script>
+<script>
+		//funcion for second select menu
+	function myFunction2() {
+	  var input = document.getElementById("others-text");
+	  input.value =document.getElementById("tego").value;
+      } 
+
+
+</script>
+
+
+
+
+
+

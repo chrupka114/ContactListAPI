@@ -1,0 +1,44 @@
+﻿@model Contact
+<form method="post" asp-action="DeletePOST">
+	<input asp-for="ID" hidden/>
+<table>
+  <tr>
+	<th>Name</th>
+	<td><input asp-for="Name" disabled class="form-control" /></td>
+  </tr>
+  <tr>
+	<th>Surname</th>
+	<td><input asp-for="Surname" disabled class="form-control" /></td>
+  </tr>
+  <tr>
+	<th>Email</th>
+	<td><input asp-for="Email" disabled class="form-control" /></td>
+  </tr>
+  <tr>
+	<th>Password</th>
+	<td><input asp-for="Password" disabled class="form-control" /></td>
+  </tr>
+  <tr>
+	<th>Category</th>
+	<td><input asp-for="ContactCategory" disabled class="form-control" /></td>
+  </tr>
+  <tr>
+	<th>Phone number</th>
+	<td><input asp-for="PhoneNumber" disabled class="form-control" /></td>
+  </tr>
+  <tr>
+	<th>Birthday</th>
+	<td><input asp-for="BirthDay" disabled class="form-control" /></td>
+  </tr>
+</table>
+
+
+
+		<a asp-controller="Home" asp-action="Index" class="btn-secondary" style="width:150px">
+			back to list
+		</a>
+	</div>
+</form>
+
+
+
